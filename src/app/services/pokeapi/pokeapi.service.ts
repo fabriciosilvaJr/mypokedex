@@ -23,5 +23,19 @@ export class PokeapiService {
 
   }
 
+  getPokemon(pokemonId: string) {
+
+    return new Promise((resolve, reject) => {
+
+      this.http.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`).subscribe((data: any) => {
+        return resolve(data);
+      }, (err: any) => {
+        return reject(err);
+      })
+
+    });
+
+  }
+
 
 }
