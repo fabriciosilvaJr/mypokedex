@@ -10,9 +10,10 @@
       <ion-title size="large">pokedex</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-searchbar [(ngModel)]="query"></ion-searchbar>
   <ion-list>
     <ion-list>
-      <ion-item *ngFor="let pokemon of pokedex">
+      <ion-item *ngFor="let pokemon of pokedex | pokemonName: query" >
         <img slot="start" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/{{ pokemon.entry_number }}.png" style="height: 50px;">
         <ion-label>{{ pokemon.pokemon_species.name }}</ion-label>
       </ion-item>

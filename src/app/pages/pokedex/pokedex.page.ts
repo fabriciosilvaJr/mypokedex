@@ -8,6 +8,7 @@ import { PokeapiService } from 'src/app/services/pokeapi/pokeapi.service';
 })
 export class PokedexPage implements OnInit {
   pokedex: any = [];
+  query: string = '';
   constructor(public pokeapiService: PokeapiService) { 
     this.getPokedex();
   }

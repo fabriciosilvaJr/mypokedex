@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PokedexPageRoutingModule } from './pokedex-routing.module';
 
 import { PokedexPage } from './pokedex.page';
+import { PokemonNamePipe } from 'src/app/pipes/pokemon-name.pipe';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { PokedexPage } from './pokedex.page';
     IonicModule,
     PokedexPageRoutingModule
   ],
-  declarations: [PokedexPage]
+  declarations: [PokedexPage,PokemonNamePipe]
 })
 export class PokedexPageModule {}
