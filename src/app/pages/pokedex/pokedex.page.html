@@ -15,13 +15,21 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12" size-md="6" size-lg="4" size-xl="3" *ngFor="let pokemon of pokedex | pokemonName: query">
-        <ion-card (click)="verMais(pokemon.entry_number)">
-          <ion-img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/' + pokemon.entry_number + '.png'" style="height: 150px;"></ion-img>
+        <ion-card (click)="verMais(pokemon.id)">
+          <ion-img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/' + pokemon.id + '.svg'" style="height: 150px;"></ion-img>
           <ion-card-header>
-            <ion-card-title>{{ pokemon.pokemon_species.name }}</ion-card-title>
+            <ion-card-title>{{ pokemon.name }}</ion-card-title>
           </ion-card-header>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
+  <!-- <div class="pagination-controls">
+    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+  </div> -->
+  <ion-infinite-scroll (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingText="Carregando mais itens..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  
 </ion-content>

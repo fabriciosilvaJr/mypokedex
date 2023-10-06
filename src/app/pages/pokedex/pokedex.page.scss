@@ -1,0 +1,24 @@
+/* Estilos para os botões de paginação */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Espaçamento superior para separar da lista de pokémons */
+  }
+  
+  .pagination-controls button {
+    margin: 0 5px; /* Espaçamento horizontal entre os botões */
+    padding: 5px 10px; /* Espaçamento interno dos botões */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Estilos para o botão atual (página ativa) */
+  .pagination-controls button.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+  }
+  
