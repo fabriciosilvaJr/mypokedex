@@ -1,3 +1,4 @@
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>pokedex</ion-title>
@@ -24,9 +25,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <!-- <div class="pagination-controls">
-    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
-  </div> -->
+
   <ion-infinite-scroll (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content loadingText="Carregando mais itens..."></ion-infinite-scroll-content>
   </ion-infinite-scroll>
