@@ -9,19 +9,20 @@ export class PokeapiService {
 
   constructor(private http: HttpClient) { }
 
-  // getPokedex() {
-
-  //   return new Promise((resolve, reject) => {
-
-  //     this.http.get("https://pokeapi.co/api/v2/pokedex/2").subscribe((data: any) => {
-  //       return resolve(data);
-  //     }, (err: any) => {
-  //       return reject(err);
-  //     })
-
-  //   });
-
-  // }
+  getPokedexFav() {
+    return new Promise((resolve, reject) => {
+      this.http.get("https://pokeapi.co/api/v2/pokedex/2").subscribe((data: any) => {
+        const favoritosLocalStorage = JSON.parse(localStorage.getItem('favoritos') || '{}');
+        const pokemonData = data.pokemon_entries.filter((entry: any) => {
+          const pokemonId = entry.entry_number;
+          return favoritosLocalStorage[pokemonId] === true;
+        });
+        return resolve(pokemonData);
+      }, (err: any) => {
+        return reject(err);
+      });
+    });
+  }
   getPokedex(currentPage: number, itemsPerPage: number) {
     const offset = (currentPage - 1) * itemsPerPage; // Calcular o deslocamento com base na página atual
   
