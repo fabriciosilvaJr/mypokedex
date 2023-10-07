@@ -23,6 +23,8 @@ export class PokedexPage implements OnInit {
 
   ngOnInit() {
     this.loadData();
+    this.loadFavoritosFromLocalStorage();
+
 
   }
   loadData(event?: any) {
@@ -51,7 +53,14 @@ export class PokedexPage implements OnInit {
     event.stopPropagation();
 
     this.favoritos[pokemonId] = !this.favoritos[pokemonId];
+    const favoritosLocalStorage = JSON.parse(localStorage.getItem('favoritos') || '{}');
+    favoritosLocalStorage[pokemonId] = this.favoritos[pokemonId];
+    localStorage.setItem('favoritos', JSON.stringify(favoritosLocalStorage));
   }
   
+  loadFavoritosFromLocalStorage() {
+    const favoritosLocalStorage = JSON.parse(localStorage.getItem('favoritos') || '{}');
+    this.favoritos = favoritosLocalStorage;
+  }
 
 }
