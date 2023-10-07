@@ -14,7 +14,8 @@ export class PokedexPage implements OnInit {
   currentPage: number = 1; // Página atual
   itemsPerPage: number = 10; // Itens por página
   isInfiniteScrollDisabled: boolean = false;
-  
+  favoritos: { [key: number]: boolean } = {};
+
   @ViewChild(IonInfiniteScroll) infiniteScroll!: IonInfiniteScroll;
 
   constructor(public pokeapiService: PokeapiService, public router:Router) { 
@@ -46,5 +47,11 @@ export class PokedexPage implements OnInit {
     this.router.navigate([`pokemon/${pokemonId}`]);
 
   }
+  toggleFavorito(pokemonId: number,event: Event) {
+    event.stopPropagation();
+
+    this.favoritos[pokemonId] = !this.favoritos[pokemonId];
+  }
+  
 
 }

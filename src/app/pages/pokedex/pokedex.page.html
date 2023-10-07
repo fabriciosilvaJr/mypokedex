@@ -19,7 +19,12 @@
         <ion-card (click)="verMais(pokemon.id)">
           <ion-img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/' + pokemon.id + '.svg'" style="height: 150px;"></ion-img>
           <ion-card-header>
-            <ion-card-title>{{ pokemon.name }}</ion-card-title>
+            <div class="pokemon-title">
+              <ion-card-title>{{ pokemon.name }}</ion-card-title>
+              <a class="coracao-link" (click)="toggleFavorito(pokemon.id, $event)">
+                <ion-icon [name]="favoritos[pokemon.id] ? 'heart' : 'heart-outline'"></ion-icon>
+              </a>
+            </div>
           </ion-card-header>
         </ion-card>
       </ion-col>
