@@ -10,4 +10,22 @@
       <ion-title size="large">favoritos</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-list *ngIf="favoritos.length > 0; else emptyList">
+    <ion-item  *ngFor="let pokemon of favoritos"  (click)="verMais(pokemon.entry_number)" class="customitem">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/' + pokemon.entry_number + '.svg'"
+         class="auto-width-img"
+        ></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ pokemon.pokemon_species.name }}</h2>
+      </ion-label>
+      <!-- <ion-button (click)="verMais(pokemon.id)" fill="clear" slot="end">Ver Mais</ion-button> -->
+    </ion-item>
+  </ion-list>
+  <ng-template #emptyList>
+    <div class="empty-list-message">
+      Ainda não foi adicionado nenhum Pokémon como favorito.
+    </div>
+  </ng-template>
 </ion-content>
