@@ -65,29 +65,34 @@ export class PokedexPage implements OnInit {
 
   confirmed = false;
 
-  
+
   clearSearch() {
     this.query = '';
     this.confirmed = false;
-    this.search();
+    this.pokedex = [];
+    this.loadData(); 
   }
   
   confirmSearch() {
     this.confirmed = true;
-    this.search();
+    this.pokedex = []; 
+    this.search(); 
   }
+
   
   search() {
     const query = this.query;
-    this.pokeapiService.getPokedex(1, this.itemsPerPage, query)
-      .then((data: any) => {
-        this.pokedex = data;
-        this.currentPage = 1;
-        this.isInfiniteScrollDisabled = false;
-      })
-      .catch((error: any) => {
-        console.error(error);
-      });
+    if (this.confirmed) { 
+      this.pokeapiService.getPokedex(1, this.itemsPerPage, query)
+        .then((data: any) => {
+          this.pokedex = data;
+          this.currentPage = 1;
+          this.isInfiniteScrollDisabled = false;
+        })
+        .catch((error: any) => {
+          console.error(error);
+        });
+    }
   }
   
 

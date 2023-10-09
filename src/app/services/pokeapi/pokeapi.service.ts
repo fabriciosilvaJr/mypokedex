@@ -55,8 +55,6 @@ export class PokeapiService {
         );
     });
   }
-  
-  
 
   getPokemon(pokemonId: string) {
 
