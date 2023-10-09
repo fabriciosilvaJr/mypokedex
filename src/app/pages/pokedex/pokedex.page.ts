@@ -28,7 +28,7 @@ export class PokedexPage implements OnInit {
 
   }
   loadData(event?: any) {
-    this.pokeapiService.getPokedex(this.currentPage, this.itemsPerPage).then((data: any) => {
+    this.pokeapiService.getPokedex(this.currentPage, this.itemsPerPage, this.query).then((data: any) => {
       const newPokemonData = data;
 
       if (newPokemonData.length > 0) {
@@ -62,5 +62,33 @@ export class PokedexPage implements OnInit {
     const favoritosLocalStorage = JSON.parse(localStorage.getItem('favoritos') || '{}');
     this.favoritos = favoritosLocalStorage;
   }
+
+  confirmed = false;
+
+  
+  clearSearch() {
+    this.query = '';
+    this.confirmed = false;
+    this.search();
+  }
+  
+  confirmSearch() {
+    this.confirmed = true;
+    this.search();
+  }
+  
+  search() {
+    const query = this.query;
+    this.pokeapiService.getPokedex(1, this.itemsPerPage, query)
+      .then((data: any) => {
+        this.pokedex = data;
+        this.currentPage = 1;
+        this.isInfiniteScrollDisabled = false;
+      })
+      .catch((error: any) => {
+        console.error(error);
+      });
+  }
+  
 
 }

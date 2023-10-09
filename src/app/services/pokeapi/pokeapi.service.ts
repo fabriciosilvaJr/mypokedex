@@ -23,23 +23,31 @@ export class PokeapiService {
       });
     });
   }
-  getPokedex(currentPage: number, itemsPerPage: number) {
-    const offset = (currentPage - 1) * itemsPerPage; // Calcular o deslocamento com base na página atual
+  getPokedex(currentPage: number, itemsPerPage: number, searchName: string | null = null) {
+    let apiUrl = `https://pokeapi.co/api/v2/pokemon?offset=${(currentPage - 1) * itemsPerPage}&limit=${itemsPerPage}`;
+  
+    if (searchName) {
+      apiUrl = `https://pokeapi.co/api/v2/pokemon/${searchName.toLowerCase()}`;
+    }
   
     return new Promise((resolve, reject) => {
       this.http
-        .get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${itemsPerPage}`)
+        .get(apiUrl)
         .subscribe(
           (data: any) => {
-            const pokemonEntries = data.results.map((entry: any) => {
-              const urlParts = entry.url.split("/");
-              const pokemonId = urlParts[urlParts.length - 2];
-              return {
-                ...entry,
-                id: parseInt(pokemonId, 10), // Converte para um número e adiciona como uma nova propriedade
-              };
-            });
-            return resolve(pokemonEntries);
+            if (searchName) {
+              return resolve([data]);
+            } else {
+              const pokemonEntries = data.results.map((entry: any) => {
+                const urlParts = entry.url.split("/");
+                const pokemonId = urlParts[urlParts.length - 2];
+                return {
+                  ...entry,
+                  id: parseInt(pokemonId, 10),
+                };
+              });
+              return resolve(pokemonEntries);
+            }
           },
           (err: any) => {
             return reject(err);
@@ -47,6 +55,7 @@ export class PokeapiService {
         );
     });
   }
+  
   
 
   getPokemon(pokemonId: string) {
