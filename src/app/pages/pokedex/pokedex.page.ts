@@ -12,7 +12,7 @@ export class PokedexPage implements OnInit {
   pokedex: any = [];
   query: string = '';
   currentPage: number = 1; // Página atual
-  itemsPerPage: number = 10; // Itens por página
+  itemsPerPage: number = 20; // Itens por página
   isInfiniteScrollDisabled: boolean = false;
   favoritos: { [key: number]: boolean } = {};
 
