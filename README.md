@@ -45,7 +45,12 @@ Para executar o projeto localmente, siga os passos abaixo:
 
 
 
+## Demonstração
+
 ![Demonstração do Aplicativo](https://github.com/fabriciosilvaJr/mypokedex/blob/master/MyPokedex.gif)
+
+*GIF demonstrando o aplicativo em execução em um dispositivo Android.*
+
 
 
 
