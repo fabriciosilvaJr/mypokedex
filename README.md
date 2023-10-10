@@ -2,35 +2,8 @@
 
 ![image](https://github.com/fabriciosilvaJr/mypokedex/assets/17913188/f7dd19ab-19ca-474c-b26a-531de96e9a0c)
 
-MyPokedex é uma aplicação Ionic com Angular que lista Pokémon e permite que você adicione-os como favoritos.
+Aplicação amigável em Ionic e Angular, priorizando uma boa experiência em dispositivos móveis. Segui padrões de codificação limpa, com componentes reutilizáveis e carregamento contínuo para facilitar a expansão. Adicionei recursos de pesquisa e favoritos para interatividade. Utilizei um serviço para consumir dados externos, resultando em um app funcional e prático.
 
-## Funcionalidades
-
-- **Pesquisa e Limpeza**: Implementei a funcionalidade de pesquisa, permitindo que os usuários pesquisem Pokémon pelo nome. A pesquisa só é confirmada após o clique no botão "Confirmar". A pesquisa pode ser cancelada ao clicar no botão "Limpar", que restaura a lista original de Pokémon.
-
-- **Carregamento Infinito**: Optei pelo carregamento infinito em vez da paginação convencional para proporcionar uma experiência mais suave em dispositivos móveis, como smartphones. Isso permite que os usuários rolem para baixo na lista e carreguem mais Pokémon de forma contínua, eliminando a necessidade de navegar entre páginas.
-
-- **Formato de Lista em Grid**: Optei por exibir a lista de Pokémon no formato de grid, pois facilita a visualização em dispositivos móveis. Isso proporciona uma experiência mais amigável para os usuários que acessam o aplicativo em smartphones.
-
-- **Favoritos**: Os usuários podem marcar Pokémon como favoritos, e essa informação é salva no armazenamento local.
-
-## Estilo de Codificação
-
-- Adotei um estilo de codificação limpo e organizado, seguindo as melhores práticas do Angular e TypeScript.
-
-- Separei o código em funções e métodos reutilizáveis para manter o código limpo e legível.
-
-## Componentização
-
-- Dividi o aplicativo em componentes reutilizáveis, como o componente da Pokedex e o componente de detalhes do Pokémon, para facilitar a manutenção e expansão futura.
-
-## Gerenciamento de Estado
-
-- Utilizei variáveis de estado para controlar o comportamento da pesquisa e da lista de Pokémon.
-
-## Serviço e Injeção de Dependência
-
-- Utilizei um serviço para consumir a API PokeAPI e tratar os dados. Esse serviço é injetado nos componentes para que os dados sejam prontamente disponíveis para uso.
 
 ## Executando o Projeto
 
