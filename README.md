@@ -43,4 +43,9 @@ Para executar o projeto localmente, siga os passos abaixo:
 3. Após instalar as dependências, inicie o projeto com o comando `ionic serve`.
 4. Abra seu navegador e acesse `http://localhost:8100/pokedex` para usar o aplicativo.
 
-https://github.com/fabriciosilvaJr/mypokedex/blob/master/MyPokedex.gif
+
+
+![Demonstração do Aplicativo](https://github.com/fabriciosilvaJr/mypokedex/blob/master/MyPokedex.gif)
+
+
+
