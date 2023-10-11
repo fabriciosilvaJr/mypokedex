@@ -10,25 +10,6 @@ export class PokeapiService {
 
   constructor(private http: HttpClient) { }
 
-  getPokedexFav(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.http.get("https://pokeapi.co/api/v2/pokedex/2")
-        .subscribe(
-          (data: any) => {
-            const favoritosLocalStorage = JSON.parse(localStorage.getItem('favoritos') || '{}');
-            const pokemonData = data.pokemon_entries.filter((entry: any) => {
-              const pokemonId = entry.entry_number;
-              return favoritosLocalStorage[pokemonId] === true;
-            });
-            resolve(pokemonData);
-          },
-          (err: any) => {
-            reject(err);
-          }
-        );
-    });
-  }
-
   fetchAllPokemonData(): Promise<any> {
     return new Promise((resolve, reject) => {
       if (!this.allPokemonDataLoaded) {
@@ -55,6 +36,25 @@ export class PokeapiService {
       }
     });
   }
+
+
+  getPokedexFav(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.fetchAllPokemonData()
+        .then(() => {
+          const favoritosLocalStorage = JSON.parse(localStorage.getItem('favoritos') || '{}');
+          const pokemonData = this.allPokemonData.filter((entry: any) => {
+            const pokemonId = entry.id;
+            return favoritosLocalStorage[pokemonId] === true;
+          });
+          resolve(pokemonData);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
+  
 
   getPokedex(currentPage: number, itemsPerPage: number, query: string): Promise<any> {
     return new Promise((resolve, reject) => {
