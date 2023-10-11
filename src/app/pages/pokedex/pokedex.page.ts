@@ -27,6 +27,7 @@ export class PokedexPage implements OnInit {
 
 
   }
+  
   loadData(event?: any) {
     this.pokeapiService.getPokedex(this.currentPage, this.itemsPerPage, this.query).then((data: any) => {
       const newPokemonData = data;
@@ -71,6 +72,9 @@ export class PokedexPage implements OnInit {
     this.loadData();
 
   }   
+
+
+
 
   
 

@@ -16,9 +16,7 @@
   <ion-list *ngIf="favoritos.length > 0; else emptyList">
     <ion-item  *ngFor="let pokemon of favoritos"  (click)="verMais(pokemon.id)" class="customitem">
       <ion-thumbnail slot="start">
-        <ion-img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/' + pokemon.id + '.svg'"
-         class="auto-width-img"
-        ></ion-img>
+        <ion-img [src]="(pokemon.id >= 650 ? 'https://via.placeholder.com/150x150?text=Image+Not+Found' : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/' + pokemon.id + '.svg')" class="auto-width-img"></ion-img>
       </ion-thumbnail>
       <ion-label>
         <h2>{{ pokemon.name }}</h2>

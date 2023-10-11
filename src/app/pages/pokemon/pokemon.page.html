@@ -13,11 +13,14 @@
 
   <ion-card>
     <div style="text-align: center">
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/{{ pokemonId }}.svg" height="250px" />
+      <img
+        [src]="(pokemonId >= 650 ? 'https://via.placeholder.com/250x250?text=Image+Not+Found' : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/' + pokemonId + '.svg')"
+        height="250px" />
     </div>
     <ion-card-header>
       <ion-card-subtitle>
-        <ion-badge color="dark" *ngFor="let type of pokemon.types" style="margin-right: 2px">{{ type.type.name }} </ion-badge>
+        <ion-badge color="dark" *ngFor="let type of pokemon.types" style="margin-right: 2px">{{ type.type.name }}
+        </ion-badge>
       </ion-card-subtitle>
       <ion-card-title>{{ pokemon.name | uppercase }}</ion-card-title>
     </ion-card-header>
