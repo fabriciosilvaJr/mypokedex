@@ -11,8 +11,8 @@ import { IonInfiniteScroll } from '@ionic/angular';
 export class PokedexPage implements OnInit {
   pokedex: any = [];
   query: string = '';
-  currentPage: number = 1; // Página atual
-  itemsPerPage: number = 20; // Itens por página
+  currentPage: number = 1; 
+  itemsPerPage: number = 20; 
   isInfiniteScrollDisabled: boolean = false;
   favoritos: { [key: number]: boolean } = {};
 
@@ -30,7 +30,6 @@ export class PokedexPage implements OnInit {
   loadData(event?: any) {
     this.pokeapiService.getPokedex(this.currentPage, this.itemsPerPage, this.query).then((data: any) => {
       const newPokemonData = data;
-
       if (newPokemonData.length > 0) {
         this.pokedex = [...this.pokedex, ...newPokemonData];
         this.currentPage++;
@@ -43,6 +42,7 @@ export class PokedexPage implements OnInit {
       }
     });
   }
+  
 
   verMais(pokemonId: string) {
 
@@ -63,37 +63,15 @@ export class PokedexPage implements OnInit {
     this.favoritos = favoritosLocalStorage;
   }
 
-  confirmed = false;
+  onSearchInput(event: any) {
+    this.query = event.detail.value.toLowerCase(); 
+    this.currentPage = 1; 
+    this.pokedex = []
+    this.isInfiniteScrollDisabled = false; 
+    this.loadData();
 
+  }   
 
-  clearSearch() {
-    this.query = '';
-    this.confirmed = false;
-    this.pokedex = [];
-    this.loadData(); 
-  }
-  
-  confirmSearch() {
-    this.confirmed = true;
-    this.pokedex = []; 
-    this.search(); 
-  }
-
-  
-  search() {
-    const query = this.query;
-    if (this.confirmed) { 
-      this.pokeapiService.getPokedex(1, this.itemsPerPage, query)
-        .then((data: any) => {
-          this.pokedex = data;
-          this.currentPage = 1;
-          this.isInfiniteScrollDisabled = false;
-        })
-        .catch((error: any) => {
-          console.error(error);
-        });
-    }
-  }
   
 
 }

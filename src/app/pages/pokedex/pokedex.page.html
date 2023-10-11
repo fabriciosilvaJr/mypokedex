@@ -14,18 +14,8 @@
       <ion-title size="large">pokedex</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-item>
-    <ion-input [(ngModel)]="query" (keyup.enter)="confirmSearch()" placeholder="Pesquisar"></ion-input>
-    <ion-buttons slot="end">
-      <ion-button *ngIf="query" (click)="confirmSearch()">
-        <ion-icon name="search"></ion-icon>
-        Confirmar
-      </ion-button>
-      <ion-button *ngIf="query && confirmed" (click)="clearSearch()">
-        <ion-icon name="close"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-item>
+  <ion-searchbar [(ngModel)]="query" (ionInput)="onSearchInput($event)"></ion-searchbar>
+
   
   <ion-grid>
     <ion-row>
